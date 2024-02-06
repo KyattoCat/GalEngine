@@ -1,0 +1,80 @@
+#first
+
+[小明]
+文本输出完后等待1s，[p=1000]
+然后继续[p]
+测试一下，但是有个waitClick[p]
+测试一下 但是有个中间有个空格 [p]
+测试一下<color=red>富文本标签</color>会不会<size=48>受影响</size>[p]
+
+
+[p]//单独一个p会被认为是设置名字
+
+// 创建UI的功能
+// id=物体id
+// type=image|rawimage
+// [parent=id] 设为对应id物体的子物体
+
+@create id=1 type=rawimage
+
+// 控制UI锚点的功能
+// target=目标物体id
+// type=topleft|topcenter|topright|left|center|right|bottomleft|bottomcenter|bottomright
+
+@anchor target=1 type=bottomright
+
+// 控制UI轴心的功能
+// target=目标物体id
+// type=topleft|topcenter|topright|left|center|right|bottomleft|bottomcenter|bottomright
+
+@pivot target=1 type=bottomright
+
+// 控制UI位置的功能 位置为轴心相对锚点位置
+// target=目标物体id
+// x=x
+// y=y
+// [z=0]
+
+@pos target=1 x=-100 y=0    // 控制id为1的位置为100,200
+
+// 控制UI缩放的功能
+// target=目标物体id
+// x=x
+// y=y
+
+@scale target=1 x=0.5 y=0.5
+
+// 给某个id设置一个图片 该id物体必须是image或rawimage
+// target=目标物体id
+// file=图片路径				// 暂时不支持文件名带空格
+
+@setImage target=1 file=Images/Characters/Female_01
+
+// 分支选择跳转的功能
+@select anser=选项1|选项2|选项3|试试往回跳 jumpTo=#label1|#label2|#label3|#first
+
+// goto的功能
+@jumpTo label=#label1
+
+// 定义标签的功能
+#label1
+[我]
+进入选项1[p]
+@jumpTo label=#end
+
+#label2
+[我]
+进入选项2[p]
+@jumpTo label=#end
+
+#label3
+[我]
+进入选项3[p]
+@jumpTo label=#end
+
+
+#end
+
+结束啦，再点一次退出[p]
+
+@exit
