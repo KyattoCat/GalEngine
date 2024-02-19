@@ -17,7 +17,6 @@ namespace GalEngine.Core
 
         // 阻塞核心状态
         private bool isWaitClick;
-
         private bool isWaitTime;
         private bool isWaitText;
         private bool isWaitSelect;
@@ -261,7 +260,7 @@ namespace GalEngine.Core
                 case CommandType.Anchor:
                     using (var arg = EventFactory.Spawn<GalEngine_SetAnchorEvent>())
                     {
-                        arg.ID = int.Parse(command.paramDic["id"]);
+                        arg.ID = int.Parse(command.paramDic["target"]);
                         arg.Anchor = TBCLRMap.Get(command.paramDic["type"]);
                         EventManager.Instance.Invoke(arg);
                     }
@@ -270,7 +269,7 @@ namespace GalEngine.Core
                 case CommandType.Pivot:
                     using (var arg = EventFactory.Spawn<GalEngine_SetPivotEvent>())
                     {
-                        arg.ID = int.Parse(command.paramDic["id"]);
+                        arg.ID = int.Parse(command.paramDic["target"]);
                         arg.Pivot = TBCLRMap.Get(command.paramDic["type"]);
                         EventManager.Instance.Invoke(arg);
                     }
@@ -279,7 +278,7 @@ namespace GalEngine.Core
                 case CommandType.Pos:
                     using (var arg = EventFactory.Spawn<GalEngine_SetPosEvent>())
                     {
-                        arg.ID = int.Parse(command.paramDic["id"]);
+                        arg.ID = int.Parse(command.paramDic["target"]);
                         arg.X = float.Parse(command.paramDic["x"]);
                         arg.Y = float.Parse(command.paramDic["y"]);
                         EventManager.Instance.Invoke(arg);
@@ -289,7 +288,7 @@ namespace GalEngine.Core
                 case CommandType.SetImage:
                     using (var arg = EventFactory.Spawn<GalEngine_SetImageEvent>())
                     {
-                        arg.ID = int.Parse(command.paramDic["id"]);
+                        arg.ID = int.Parse(command.paramDic["target"]);
                         arg.FilePath = command.paramDic["file"];
                         EventManager.Instance.Invoke(arg);
                     }

@@ -5,11 +5,12 @@ namespace GalEngine.Core
 {
     public class Command
     {
-        private static StringBuilder stringBuilder = new StringBuilder();
-
         public int index;
         public CommandType type;
         public Dictionary<string, string> paramDic;
+
+#if UNITY_EDITOR
+        private static StringBuilder stringBuilder = new StringBuilder();
 
         public override string ToString()
         {
@@ -27,5 +28,6 @@ namespace GalEngine.Core
 
             return $"[{index}] ({type}) {{{stringBuilder.ToString()}}}";
         }
+#endif
     }
 }

@@ -15,4 +15,6 @@ public class StoryTalkWindowDataComponent : MonoBehaviour
     public RawImage Background1;
     public RawImage Background2;
     public RectTransform ObjectRoot;
+
+    public RectTransform Arrow;
 }

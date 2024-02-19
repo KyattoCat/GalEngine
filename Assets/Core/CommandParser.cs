@@ -65,13 +65,13 @@ namespace GalEngine.Core
             CommandType tempCommandType = CommandType.None;
             Dictionary<string, string> tempParamDic = default;
 
-            // 单行注释
-            if (line.StartsWith(@"//"))
-                return;
-            // 同行注释
+            // 注释
             Match match = Regex.Match(line, @"(?<cmd>[^/]*)//");
             if (match.Success)
                 line = match.Groups["cmd"].Value.Trim();
+
+            if (string.IsNullOrEmpty(line))
+                return;
 
             // [who]
             match = Regex.Match(line, @"\A\[(?<name>\w*)\]");

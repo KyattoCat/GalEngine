@@ -7,16 +7,12 @@ using UnityEngine;
 public class StoryTalkWindow : MonoBehaviour
 {
     private StoryTalkWindowDataComponent dataCompt;
-    private GalEngineCore galEngineCore;
     private List<AnswerButton> answerButtonList;
     private StoryTalkContent storyTalkContent;
     private GalEngineObjectManager objectManager;
 
     private void Awake()
     {
-        galEngineCore = new GalEngineCore();
-        galEngineCore.Initialize(Application.dataPath + "/StoryScripts/test.txt");
-
         dataCompt = GetComponent<StoryTalkWindowDataComponent>();
 
         storyTalkContent = new StoryTalkContent(dataCompt);
@@ -151,9 +147,7 @@ public class StoryTalkWindow : MonoBehaviour
 
     private void Update()
     {
-        if (galEngineCore.IsInitialized)
-            galEngineCore.Update();
-
         storyTalkContent?.Update();
+        dataCompt.Arrow.SetVisible(!storyTalkContent.IsTyping);
     }
 }
